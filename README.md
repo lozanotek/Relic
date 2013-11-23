@@ -42,3 +42,46 @@ for (var i = 0; i < 5000; i++) {
     manager.Set(i.ToString(), "value " + i);
 }
 ```
+
+Here's the full sample program
+
+```
+class Program {
+    static void Main() {
+        var manager = GetRelicManager();
+
+
+        manager.ErrorHandler((item, ex) => Console.WriteLine(ex.Message));
+	manager.NotifyHandler(CleanConsole);
+	manager.NotifyHandler(RedConsole);
+        
+	RelicNotifyHandler awesome = item => Console.WriteLine("I'm awesome.");
+	manager.NotifyHandler(awesome);
+
+	for (var i = 0; i < 5000; i++) {
+	    manager.Set(i.ToString(), "value " + i);
+        }
+
+        Console.Write("Press any key to exit...");
+        Console.ReadKey(true);
+    }
+
+    static IRelicManager GetRelicManager() {
+        var cacheProvider = new StaticCacheProvider();
+        var notifier = new DefaultRelicNotifier();
+
+        return new RelicManager(notifier, cacheProvider);
+    }
+
+    static void CleanConsole(RelicItem item) {
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine("{0}:{1}", item.Key, item.Value);
+    }
+
+    static void RedConsole(RelicItem item) {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("{0}:{1}", item.Key, item.Value);
+        Console.ForegroundColor = ConsoleColor.White;
+    }
+}
+```
