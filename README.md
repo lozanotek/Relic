@@ -49,17 +49,15 @@ Here's the full sample program
 class Program {
     static void Main() {
         var manager = GetRelicManager();
-
-
         manager.ErrorHandler((item, ex) => Console.WriteLine(ex.Message));
-	manager.NotifyHandler(CleanConsole);
-	manager.NotifyHandler(RedConsole);
-        
-	RelicNotifyHandler awesome = item => Console.WriteLine("I'm awesome.");
-	manager.NotifyHandler(awesome);
+        manager.NotifyHandler(CleanConsole);
+        manager.NotifyHandler(RedConsole);
 
-	for (var i = 0; i < 5000; i++) {
-	    manager.Set(i.ToString(), "value " + i);
+        RelicNotifyHandler awesome = item => Console.WriteLine("I'm awesome.");
+        manager.NotifyHandler(awesome);
+
+        for (var i = 0; i < 5000; i++) {
+            manager.Set(i.ToString(), "value " + i);
         }
 
         Console.Write("Press any key to exit...");
