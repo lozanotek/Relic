@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+        <id>Relic</id>
+        <version>1.0.0.0</version>
+        <authors>jglozano</authors>
+        <owners>jglozano</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <projectUrl>http://github.com/lozanotek/relic</projectUrl>
+        <licenseUrl>https://raw.github.com/lozanotek/Relic/master/LICENSE</licenseUrl>
+        <tags>Cache</tags>
+        <description>Relic is a simple manager/broker for a caching provider and events associated for a cache.</description>
+        <summary>Relic is a simple manager/broker for a caching provider and events associated for a cache.</summary>
+        <language>en-US</language>
+    </metadata>
+</package>
